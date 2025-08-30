@@ -1,0 +1,332 @@
+Website Payment dengan Desain Hitam yang Keren
+
+Saya akan membuatkan halaman payment dengan desain modern dan warna hitam yang elegan, termasuk informasi pembayaran DANA dan tombol WhatsApp.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #121212;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #000;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #008fe5 0%, #00b5b8 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 0 20px rgba(0, 183, 184, 0.5);
+        }
+        
+        .logo i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .payment-info {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #333;
+        }
+        
+        .info-title {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        
+        .info-detail {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+        
+        .info-detail.copyable {
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .info-detail.copyable:hover {
+            color: #00b5b8;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #333;
+            margin: 20px 0;
+        }
+        
+        .steps {
+            margin: 25px 0;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #00b5b8;
+            color: #000;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            color: #ddd;
+        }
+        
+        .whatsapp-btn {
+            display: block;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #00b5b8;
+            color: #000;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.4s;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 12px;
+            border-top: 1px solid #222;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-detail {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-wallet"></i>
+            </div>
+            <h1>Payment Gateway</h1>
+            <p>Lakukan pembayaran dengan DANA</p>
+        </div>
+        
+        <div class="content">
+            <div class="payment-info">
+                <div class="info-title">Nomor DANA</div>
+                <div class="info-detail copyable" id="dana-number">
+                    <span>083175050030</span>
+                    <i class="fas fa-copy"></i>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="info-title">Atas Nama</div>
+                <div class="info-detail copyable" id="dana-name">
+                    <span>YUYU</span>
+                    <i class="fas fa-copy"></i>
+                </div>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Buka aplikasi DANA di perangkat Anda</div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Pilih menu "Kirim" atau "Transfer"</div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Masukkan nomor DANA yang tertera di atas</div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Masukkan jumlah transfer sesuai pesanan</div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-text">Konfirmasi dan selesaikan pembayaran</div>
+                </div>
+            </div>
+            
+            <a href="https://wa.me/message/N47TVBF5ONAVG1" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Konfirmasi via WhatsApp
+            </a>
+        </div>
+        
+        <div class="footer">
+            &copy; 2023 Payment Gateway | Pastikan informasi pembayaran sudah benar
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">Teks berhasil disalin!</div>
+    
+    <script>
+        // Fungsi untuk copy teks
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('notification');
+                notification.textContent = 'Teks berhasil disalin!';
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+        
+        // Event listener untuk elemen yang bisa dicopy
+        document.getElementById('dana-number').addEventListener('click', () => {
+            copyText('083175050030');
+        });
+        
+        document.getElementById('dana-name').addEventListener('click', () => {
+            copyText('YUYU');
+        });
+    </script>
+</body>
+</html>
+```
+
+Fitur-fitur:
+
+1. Desain Modern Hitam - Tampilan elegan dengan warna hitam dan aksen biru-hijau
+2. Informasi Pembayaran - Menampilkan nomor DANA dan nama penerima
+3. Fitur Copy - Klik pada nomor atau nama untuk menyalin ke clipboard
+4. Petunjuk Pembayaran - Langkah-langkah melakukan pembayaran dengan DANA
+5. Tombol WhatsApp - Tombol besar untuk terhubung ke WhatsApp
+6. Responsif - Tampilan yang optimal di desktop dan mobile
+7. Efek Visual - Animasi dan efek hover yang menarik
+
+Anda dapat langsung menggunakan kode di atas dengan menyalin dan menjalankannya di browser. Tombol WhatsApp akan mengarahkan ke chat yang ditentukan.
